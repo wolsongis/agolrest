@@ -20,9 +20,13 @@
 
       // adding in the modules for the graphic and graphic layer
       "esri/Graphic",
-      "esri/layers/GraphicsLayer"
+      "esri/layers/GraphicsLayer",
 
-    ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer) {
+      //adding in the module for the feature layers
+
+      "esri/layers/FeatureLayer"
+
+    ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer) {
 
       esriConfig.apiKey = "AAPK2cb19acc98eb406b80346e85af5aa1ffagWp07_WJVQlFAY2XL6xGrQ86USz9K6UzB1OaBd37PTIlYdHTo04S0-F9ETbr-dC";
       const map = new Map({
@@ -75,11 +79,17 @@
           //adding popup properites
           attributes: attributes,
           popupTemplate: popupTemplate
-
-         });
+        });
          
          //adding the point to the graphicsLayer
          graphicsLayer.add(pointGraphic);
+
+         //adding the constructor for the feature layer
+         const usaeduLayer = new FeatureLayer({
+          url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer"
+        });
+
+        map.add(usaeduLayer);
     });
   </script>
 
