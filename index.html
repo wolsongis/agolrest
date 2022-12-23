@@ -101,6 +101,10 @@
         //adding the feature layer to the map
         map.add(usaeduLayer);
 
+        const airportLayer = new FeatureLayer({
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
+        });
+
     });
   </script>
 
@@ -111,7 +115,7 @@
     #viewDiv {
       padding: 0;
       margin: 0;
-      height: 100%;
+      height: 100%; 
       width: 100%;
     }
   </style>
