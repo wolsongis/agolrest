@@ -39,7 +39,7 @@
           container: "viewDiv" // Div element
         });
 
-        //adding the constructor for the graphicslayer
+        //adding the const for the graphicslayer
         const graphicsLayer = new GraphicsLayer();
         map.add(graphicsLayer);
 
@@ -89,7 +89,7 @@
             "content": "<b>Name:</b> {NAME}<br><b>Total Enrollment:</b> {TOT_ENROLL}<br>"
         }
 
-         //adding the constructor for the feature layer
+         //adding the const for the feature layer
          const usaeduLayer = new FeatureLayer({
           url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer",
 
@@ -112,6 +112,8 @@
           "height": "18px"
         }
       }
+
+      //const to make the airport labels
 
       const airportLabels = {
         symbol: {
@@ -137,7 +139,10 @@
           url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
           renderer: airportRenderer,  //calling the icon
 
-          definitionExpression: "Fac_Type = 'AIRPORT'" //adding sql to filter for airports
+          definitionExpression: "Fac_Type = 'AIRPORT'", //adding sql to filter for airports
+
+          labelingInfo: [airportLabels] //adding the labels 
+
 
         });
 
