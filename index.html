@@ -152,10 +152,21 @@
         //adding the feature layer to the map
         map.add(airportLayer);
 
+        //setting up the icon
+        const myAirportsRenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "https://raw.githubusercontent.com/wolsongis/agolrest/refs/heads/main/1259687.png",
+          "width": "18x",
+          "height": "18px"
+        }
+      };
+
         //adding the const for the feature layer
         const myAirports = new FeatureLayer({
           url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/WO_Airports/FeatureServer",
- 
+          renderer: myAirportsRenderer,  //calling the icon
           //adding the popup here
           outFields: ["AirportCode"],
 
