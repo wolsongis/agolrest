@@ -189,8 +189,8 @@
         const myAirports = new FeatureLayer({
           url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/WO_Airports/FeatureServer",
           renderer: myAirportsRenderer,  //calling the icon
-          //adding the popup here
-          outFields: ["AirportCode"],
+          labelingInfo: [myAirportLabels], //adding the labels
+          outFields: ["AirportCode"], //adding the popup here
 
         });
 
