@@ -22,10 +22,13 @@
       "esri/Graphic",
       "esri/layers/GraphicsLayer",
 
-      //adding in the module for the feature layers
-      "esri/layers/FeatureLayer"
+      // adding in the module for the feature layers
+      "esri/layers/FeatureLayer",
 
-    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer) {
+      // adding editor widget 
+      "esri/widgets/Editor"
+
+    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor) {
 
       esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurNAUgv3aeRUmzJ4ckMevLQLfVJhdc-z1-a5rmBvbZM6HiAtWhTkHR1uPqL3lwJdP49LWHB6rjySi-OGZeNP1ea6oiztHSf22dFyO6r4o94L1an9zLTOBsN3vlqSz7k8MyUO9e1udJ3zNViSQ518xOFVwCnGBfyh40rSb4E2X3zsumGVzsUowRjXGPUi8Odwr1Y9iVZinjPQa-7TSBIuR8E4.AT1_EtHHMprs";
       const map = new Map({
@@ -148,6 +151,32 @@
 
         //adding the feature layer to the map
         map.add(airportLayer);
+
+        //adding the const for the feature layer
+        const myAirports = new FeatureLayer({
+          url: "YOUR URL HERE",
+ 
+          //adding the popup here
+          outFields: ["AirportCode"],
+
+        });
+
+          //adding the feature layer to the map
+          map.add(myAirports);
+
+          // Set the point layer's LayerInfo
+          const pointInfos = {
+            layer: myAirports
+          }
+
+          // Begin Editor constructor
+          const editor = new Editor({
+            view: view,
+            layerInfos: [pointInfos]
+          }); // End Editor constructor
+
+          // Add the widget to the view
+          view.ui.add(editor, "top-right");
 
     });
   </script>
