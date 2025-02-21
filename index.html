@@ -26,9 +26,12 @@
       "esri/layers/FeatureLayer",
 
       // adding editor widget 
-      "esri/widgets/Editor"
+      "esri/widgets/Editor",
 
-    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor) {
+      // adding legend widget
+      "esri/widgets/Legend"
+
+    ], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, Legend) {
 
       esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurNAUgv3aeRUmzJ4ckMevLQLfVJhdc-z1-a5rmBvbZM6HiAtWhTkHR1uPqL3lwJdP49LWHB6rjySi-OGZeNP1ea6oiztHSf22dFyO6r4o94L1an9zLTOBsN3vlqSz7k8MyUO9e1udJ3zNViSQ518xOFVwCnGBfyh40rSb4E2X3zsumGVzsUowRjXGPUi8Odwr1Y9iVZinjPQa-7TSBIuR8E4.AT1_EtHHMprs";
       const map = new Map({
@@ -210,6 +213,29 @@
 
           // Add the widget to the view
           view.ui.add(editor, "top-right");
+
+          // Adding a legend widget
+          const legend = new Legend({
+            view: view,
+            layerInfos: [
+              {
+                layer: usaeduLayer,
+                title: "Colleges and Universities in the US"
+              },
+              {
+                layer: airportLayer, 
+                title: "Airports in the US"},
+
+              {
+                layer: myAirports, 
+                title: "Airport Codes, Publicly Editable"
+              }
+            ]
+          }); 
+
+          // Add widget to the bottom right corner of the view
+          view.ui.add(legend, "bottom-right");
+          
 
     });
   </script>
